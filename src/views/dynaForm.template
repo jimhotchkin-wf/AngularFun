@@ -1,0 +1,26 @@
+<div class="row">
+    <form wf-dynamic-form entity="userprofile" class="form-horizontal">
+    <div class="span8">   
+        <fieldset ng-repeat="category in formDefinitionObject.fieldtypes.visible.categories" id="{{category.entity}}_fields">
+            <legend>{{category.label}}</legend>
+            <div wf-dynamic-field ng-repeat="field in category.fields" content="field" class="control-group"></div>
+        </fieldset>
+        <div class="form-actions">
+            <button type="submit" id="go" class="btn btn-primary">Save changes</button>
+            <button type="button" id="cancel" class="btn">Cancel</button>
+        </div>
+    </div>
+    <div class="span4">
+        <ul>
+            <li ng-repeat="category in formDefinitionObject.fieldtypes.visible.categories">
+                {{category.entity}}
+                <ul>
+                    <li ng-repeat="field in category.fields" content="field">
+                        {{field.entity}} -- {{field.value}}
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    </form>
+</div>
