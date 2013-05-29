@@ -5,6 +5,8 @@ angular.module('app')
         $scope.awesomeThings = [
             'HTML5 Boilerplate',
             'AngularJS',
+            'RequireJS',
+            'Grunt',
             'Karma'
         ];
     }])
