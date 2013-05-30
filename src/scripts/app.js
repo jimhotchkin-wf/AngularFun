@@ -1,19 +1,20 @@
-// angular.module('app', ['ngResource']);
+define([
+    'angular',
+    'controllers/coreController',
+    'directives/wfDatePicker',
+    'directives/wfDynamicField',
+    'directives/wfDynamicForm',
+    'services/getData',
+    'services/getTemplate'
+    ], function (angular, coreController, wfDatePicker, wfDynamicField, wfDynamicForm, getData, getTemplate) {
+        'use strict';
 
-'use strict';
-
-angular.module('app', [])
-    .config(['$routeProvider', function ($routeProvider) {
-        $routeProvider
-            .when('/', {
-                templateUrl: 'views/main.html',
-                controller: 'MainCtrl'
-            })
-            .when('/dynaform', {
-                templateUrl: 'views/dynaForm.html',
-                controller: 'DynaFormCtrl'
-            })
-            .otherwise({
-                redirectTo: '/'
-            });
-    }]);
+        return angular.module('wfApp', [
+            'wfApp.coreController',
+            'wfApp.wfDatePicker',
+            'wfApp.wfDynamicField',
+            'wfApp.wfDynamicForm',
+            'wfApp.getData',
+            'wfApp.getTemplate'
+        ]);
+});

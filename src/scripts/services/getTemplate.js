@@ -1,30 +1,33 @@
-'use strict';
+define(['angular'], function (angular) {
 
-angular.module('app')
-    .factory('getTemplate', [function () {
+    'use strict';
 
-        var getTemplate = function (type) {
-            var template, labelTemplate = '<label for="id_{{field.entity}}" class="control-label">{{field.label}}<span ng-show="field.required" class="required-indicator" title="This Field is Required">*</span></label>';
-            switch (type) {
-            case 'textarea':
-                template = labelTemplate + '<div class="controls"><textarea rows="{{field.rows}}" name="{{field.entity}}" id="id_{{field.entity}}" ng-model="field.value" maxlength="{{field.maxlength}}" ng-required="field.required"></textarea></div>';
-                break;
-            case 'select':
-                template = labelTemplate + '<div class="controls"><select name="{{field.entity}}" id="id_{{field.entity}}" ng-model="field.value" maxlength="{{field.maxlength}}" ng-required="field.required" ng-options="o.value as o.label for o in field.choices"></select></div>';
-                break;
-            case 'hidden':
-                template = '<input type="hidden" name="{{field.entity}}" id="id_{{field.entity}}" ng-model="field.value" />';
-                break;
-            case 'date':
-                template = labelTemplate + '<div wf-date-picker></div>';
-                break;
-            default:
-                template = labelTemplate + '<div class="controls"><input type="{{field.type}}" id="id_{{field.entity}}" placeholder="{{field.label}}" ng-required="field.required" maxlength="{{field.maxlength}}" ng-readonly="field.readonly" ng-model="field.value"></div>';
-                break;
-            }
-            return template;
-        };
+    angular.module('wfApp.getTemplate', [])
+        .factory('getTemplate', [function () {
 
-        return getTemplate;
+            var getTemplate = function (type) {
+                var template, labelTemplate = '<label for="id_{{field.entity}}" class="control-label">{{field.label}}<span ng-show="field.required" class="required-indicator" title="This Field is Required">*</span></label>';
+                switch (type) {
+                case 'textarea':
+                    template = labelTemplate + '<div class="controls"><textarea rows="{{field.rows}}" name="{{field.entity}}" id="id_{{field.entity}}" ng-model="field.value" maxlength="{{field.maxlength}}" ng-required="field.required"></textarea></div>';
+                    break;
+                case 'select':
+                    template = labelTemplate + '<div class="controls"><select name="{{field.entity}}" id="id_{{field.entity}}" ng-model="field.value" maxlength="{{field.maxlength}}" ng-required="field.required" ng-options="o.value as o.label for o in field.choices"></select></div>';
+                    break;
+                case 'hidden':
+                    template = '<input type="hidden" name="{{field.entity}}" id="id_{{field.entity}}" ng-model="field.value" />';
+                    break;
+                case 'date':
+                    template = labelTemplate + '<div wf-date-picker></div>';
+                    break;
+                default:
+                    template = labelTemplate + '<div class="controls"><input type="{{field.type}}" id="id_{{field.entity}}" placeholder="{{field.label}}" ng-required="field.required" maxlength="{{field.maxlength}}" ng-readonly="field.readonly" ng-model="field.value"></div>';
+                    break;
+                }
+                return template;
+            };
+
+            return getTemplate;
 
     }]);
+});
