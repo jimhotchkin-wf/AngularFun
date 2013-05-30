@@ -15,9 +15,6 @@ require.config({
     'angularMocks': {
       deps: ['angular'],
       'exports': 'angular.mock'
-    },
-    'lib/angular/angular-resource.min': {
-      deps: ['angular']
     }
   }
 });
