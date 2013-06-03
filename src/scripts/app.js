@@ -1,20 +1,16 @@
 define([
     'angular',
-    'controllers/coreController',
-    'directives/wfDatePicker',
-    'directives/wfDynamicField',
-    'directives/wfDynamicForm',
-    'services/getData',
-    'services/getTemplate'
-    ], function (angular, coreController, wfDatePicker, wfDynamicField, wfDynamicForm, getData, getTemplate) {
+    'routes',
+    'controllers-init',
+    'directives-init',
+    'services-init'
+    ], function (angular, routes, controllers, directives, services) {
         'use strict';
-
+        // Declare app level module which depends on controllers, filters, and services
         return angular.module('wfApp', [
-            'wfApp.coreController',
-            'wfApp.wfDatePicker',
-            'wfApp.wfDynamicField',
-            'wfApp.wfDynamicForm',
-            'wfApp.getData',
-            'wfApp.getTemplate'
+            'wf-routes',
+            'wf-controllers',
+            'wf-directives',
+            'wf-services'
         ]);
 });

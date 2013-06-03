@@ -1,8 +1,7 @@
 define(['angular'], function (angular) {
     'use strict';
 
-    angular.module('wfApp.getData', [])
-        .factory('getData', ['$http', function ($http) {
+    var getData = function ($http) {
             // Service logic
             // ...
 
@@ -24,5 +23,9 @@ define(['angular'], function (angular) {
                     return promise;
                 }
             };
-    }]);
+    };
+
+    getData.$inject = ['$http'];
+
+    return getData;
 });

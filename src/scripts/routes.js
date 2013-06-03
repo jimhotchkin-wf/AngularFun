@@ -1,14 +1,16 @@
-define(['angular', 'app'], function (angular, app) {
+define(['angular'], function (angular) {
     'use strict';
-    return app.config(['$routeProvider', function ($routeProvider) {
+    var routes = angular.module('wf-routes', []);
+
+    return routes.config(['$routeProvider', function ($routeProvider) {
         $routeProvider
             .when('/', {
                 templateUrl: 'views/main.html',
-                controller: 'MainCtrl'
+                controller: 'mainController'
             })
             .when('/dynaform', {
                 templateUrl: 'views/dynaForm.html',
-                controller: 'DynaFormCtrl'
+                controller: 'dynaFormController'
             })
             .otherwise({
                 redirectTo: '/'

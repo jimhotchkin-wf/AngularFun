@@ -2,8 +2,7 @@ define(['angular'], function (angular) {
 
     'use strict';
 
-    angular.module('wfApp.getTemplate', [])
-        .factory('getTemplate', [function () {
+    var getTemplate = function () {
 
             var getTemplate = function (type) {
                 var template, labelTemplate = '<label for="id_{{field.entity}}" class="control-label">{{field.label}}<span ng-show="field.required" class="required-indicator" title="This Field is Required">*</span></label>';
@@ -29,5 +28,10 @@ define(['angular'], function (angular) {
 
             return getTemplate;
 
-    }]);
+    };
+
+    getTemplate.$inject = [];
+
+    return getTemplate;
+
 });

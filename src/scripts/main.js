@@ -3,7 +3,9 @@ require.config({
   paths: {
     jquery: 'lib/jquery/jquery.min',
     text: 'lib/require/text',
-    angular: 'lib/angular/angular.min'
+    angular: 'lib/angular/angular.min',
+    'angular-resource': 'lib/angular/angular-resource.min',
+    'angular-mocks': '../../test/scripts/libs/angular-mocks'
   },
   priority: [
     'angular'
@@ -12,19 +14,19 @@ require.config({
     'angular': {
       'exports': 'angular'
     },
-    'angularMocks': {
+    'angular-mocks': {
       deps: ['angular'],
       'exports': 'angular.mock'
-    }
+    },
+    'angular-resource': ['angular']
   }
 });
 
 require([
   'jquery',
   'angular',
-  'app',
-  'routes'
-  ], function ($, angular, app, routes) {
+  'app'
+  ], function ($, angular, app) {
     'use strict';
     $(document).ready(function(){
       var $html = $('html');
