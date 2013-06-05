@@ -1,6 +1,11 @@
-var path;
+var path, modules;
 
 path = require('path');
+
+modules = {
+  self: this,
+  requireJs: require('./src/scripts/require-config.js')
+};
 
 module.exports = function(grunt) {
   grunt.initConfig({
@@ -199,25 +204,15 @@ module.exports = function(grunt) {
       scripts: {
         options: {
           baseUrl: './.temp/scripts/',
-          findNestedDependencies: true,
+          paths: modules.requireJs.config.paths,
+          shim: modules.requireJs.config.shim,
+          name: './lib/require/almond.min',
+          include: 'main',
           logLevel: 0,
-          mainConfigFile: './.temp/scripts/main.js',
-          name: 'main',
-          onBuildWrite: function(moduleName, path, contents) {
-            var modulesToExclude, shouldExcludeModule;
-
-            modulesToExclude = ['main'];
-            shouldExcludeModule = modulesToExclude.indexOf(moduleName) >= 0;
-            if (shouldExcludeModule) {
-              return '';
-            }
-            return contents;
-          },
           optimize: 'uglify2',
           out: './.temp/scripts/scripts.min.js',
           preserveLicenseComments: false,
           generateSourceMaps: true,
-          skipModuleInsertion: true,
           uglify: {
             no_mangle: true
           }

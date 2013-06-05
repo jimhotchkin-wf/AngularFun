@@ -42,6 +42,10 @@
 
 		<div class="container" ng-view></div>
 
-		<script data-main="/scripts/main.js" src="/scripts/lib/require/require.min.js"></script>
+		<% if (config.environment === 'prod') { %>
+			<script src="/scripts/scripts.min.js?v=<%= config.hash('./.temp/scripts/scripts.min.js') %>"></script>
+		<% } else { %>
+			<script data-main="/scripts/main.js" src="/scripts/lib/require/require.min.js?v=<%= config.hash('./.temp/scripts/lib/require/require.min.js') %>"></script>
+		<% } %>
 	</body>
 </html>
